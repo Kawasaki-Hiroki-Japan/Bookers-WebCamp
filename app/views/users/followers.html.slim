@@ -1,0 +1,13 @@
+.row
+  .col-xs-3
+    h2
+      | User info
+    = render 'info', user: current_user
+    h2
+      | New book
+    = render 'books/form', book: @book
+  .col-xs-9
+    h2
+      = current_user==@user?"自分":@user.name
+      | のフォロワーリスト
+    = render 'index', users: @user.followers

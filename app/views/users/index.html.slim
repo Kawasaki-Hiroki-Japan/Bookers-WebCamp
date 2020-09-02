@@ -1,0 +1,6 @@
+.row
+  .application__sidebar.col-md-3
+    == render 'users/info', user: current_user
+    == render 'books/form', book: @book
+  .users_index.offset-md-1.col-md-8
+    == render 'users/index', users: @users

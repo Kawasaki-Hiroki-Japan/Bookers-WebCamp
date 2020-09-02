@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title Bookers
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    script[src="https://jpostal-1006.appspot.com/jquery.jpostal.js"]
+  body
+    == render 'layouts/header'
+    // == render 'layouts/search_form'
+    main
+      .container
+        .application__notice#notice
+          = notice
+        = yield
+        == render 'users/map'
+    == render 'layouts/footer'

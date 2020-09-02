@@ -1,0 +1,18 @@
+.row
+  .col-xs-3
+    h2
+      | User info
+    = render 'users/info', user: current_user
+    h2
+      | New book
+    = render 'books/form', book: @book
+  .col-xs-9
+    - case @model
+    - when 'book'
+      h2
+        | Books
+      = render 'books/index', books: @records
+    - when 'user'
+      h2
+        | Users
+      = render 'users/index', users: @records

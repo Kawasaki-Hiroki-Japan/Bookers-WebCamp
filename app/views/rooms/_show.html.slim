@@ -1,0 +1,4 @@
+.row
+  h2 = "Chat ~ Room-ID:#{room.id} ~"
+  .chats__table.col-md-12
+    == render 'chats/index', chats: room.chats, chat: chat, user: user

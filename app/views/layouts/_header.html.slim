@@ -1,0 +1,16 @@
+header.navbar.navbar-expand-lg.navbar-light.bg-dark
+  .container
+    nav.nav.navbar-nav.navbar-left
+      span.navbar-brand.mb-0.h1 Bookers
+    nav.collapse.navbar-collapse
+      ul.nav.navbar-nav.ml-auto
+        - if user_signed_in?
+          li = link_to ' Home', current_user, class: 'nav-item nav-link home'
+          li = link_to ' Users', users_path, class: 'nav-item nav-link users'
+          li = link_to ' Books', books_path, class: 'nav-item nav-link books'
+          li = link_to ' logout', destroy_user_session_path, method: :delete,class: 'nav-item nav-link logout', data: { 'turbolinks' => false }
+        - else
+          li = link_to ' Home', root_path, class: 'nav-item nav-link home', data: { 'turbolinks' => false }
+          li = link_to ' About', home_about_path, class: 'nav-item nav-link about'
+          li = link_to ' sign up', new_user_registration_path, class: 'nav-item nav-link sign_up', data: { 'turbolinks' => false }
+          li = link_to ' login', new_user_session_path, class: 'nav-item nav-link sign_in', data: { 'turbolinks' => false }

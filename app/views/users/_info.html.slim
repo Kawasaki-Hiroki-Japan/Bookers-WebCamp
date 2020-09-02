@@ -1,0 +1,34 @@
+.row.mb-5
+
+  h2 User info
+  .col-md-12
+    .row
+      table.table.col-md-12
+        tr
+          td = attachment_image_tag(user, :profile_image, size: '100x100', fallback: 'no_image.jpg')
+          td
+            - if current_user == user
+              - if current_user.is_display_map
+                = link_to 'MAP 表示中', map_display_path, method: :patch, class: 'btn btn-primary'
+              - else
+                = link_to 'MAP 非表示', map_display_path, method: :patch, class: 'btn btn-light'
+            - else
+              == render 'users/follow_btn', user: user
+        tr
+          th name
+          td = user.name
+        tr
+          th ntroduction
+          td = user.introduction
+        tr
+          th フォロー
+          td = link_to "#{user.followings.count}人", followings_user_path(user)
+        tr
+          th フォロワー
+          td = link_to "#{user.followers.count}人", followers_user_path(user)
+
+    .row
+      - if user == current_user
+        = link_to 'Edit', edit_user_path(user), class: "col-md-12 btn btn-primary"
+      - else
+        = link_to 'Chat', user_rooms_path(user), method: :get, class: "col-md-12 btn btn-primary", data: {"turbolinks" => false}

@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+<% if (request.fullpath[0, 7] != "/users/" || request.fullpath == "/users/#{current_user.id}") && current_user.is_display_map %>
+    <div>
+      <h2>My MAP（<%= current_user.prefectures + current_user.city %>）<h2>
+      <div id="map"></div>
+    </div>
+  <script>
+    let myLatLng, map, marker;
+    function initMap(){
+      myLatLng = new google.maps.LatLng(<%= current_user.latlng[0] %>, <%= current_user.latlng[1] %>);
+      map = new google.maps.Map(document.getElementById('map'),{
+        center: myLatLng,
+        zoom: 12
+      });
+      marker = new google.maps.Marker({
+        map: map,
+        position: myLatLng
+     });
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['MAPS_API_KEY']%>&callback=initMap" async defer></script>
+<% end %>
+<% end %>

@@ -1,0 +1,11 @@
+.row
+  .col-md-12
+    h2 Book detail
+    .row.books_detail__table
+      == render 'books/detail', book: book
+    .row.books_comment__table
+      == render 'book_comments/table', book_comments: book.book_comments
+    .row.books_comment__form
+      = form_with(model: [book, comment], data: {local: false, remote: true}) do |f|
+        = f.text_area :body, class: "books_comment__body--new col-md-12"
+        = f.submit "送信", class: "btn btn-primary col-md-12", id: "comment__textarea"

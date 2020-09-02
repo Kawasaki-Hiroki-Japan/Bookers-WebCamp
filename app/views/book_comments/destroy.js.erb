@@ -1,0 +1,6 @@
+$('.books_detail__table').html(
+  "<%= j(render partial: 'books/detail', locals: {book: @book}) %>"
+)
+$('.books_comment__table').html(
+  "<%= j(render partial: 'table', locals: {book_comments: @book.book_comments}) %>"
+)

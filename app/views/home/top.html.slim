@@ -1,0 +1,12 @@
+.row
+  .home__message.offset-md-3.col-md-6
+    h1 welcome to Bookers !!
+    p In Bookers,
+    p you can share and exchange your opinions , inpressions , and emotions
+    p about varioius books!
+
+    .hoom_btn
+      .row
+        = link_to 'Log in', new_user_session_path, class: "btn btn-info col-md-10 offset-md-1", data: {"turbolinks" => false}
+      .row.mt-2
+        = link_to 'Sign Up', new_user_registration_path, class: "btn btn-success col-md-10 offset-md-1", data: {"turbolinks" => false}

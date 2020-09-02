@@ -1,0 +1,4 @@
+- if book.favorited_by?(user)
+  = link_to "★ #{book.favorites.count}", book_favorites_path(book), method: :delete, remote: true
+- else
+  = link_to "☆ #{book.favorites.count}", book_favorites_path(book), method: :post, remote: true

@@ -1,0 +1,37 @@
+<script>
+$(function(){
+  setInterval(function(){update();}, 1000);
+});
+function update(){
+  if($('.chat')[0]){
+    $.ajax({
+      url: location.href,
+      type: 'GET',
+      dataType: 'json'
+    })
+    .always(function(data){
+      $('.chats__tbody').empty();
+      $.each(data, function(i, data){
+        if(data.user_id == <%= current_user.id %>){
+          $('.chats__tbody').append(
+            '<tr class="row chat chats__record--'+data.id+'">'+
+              '<td class="col-md-5">'+data.text+'</td>'+
+              '<td class="col-md-2"><a href= "/chats/'+data.id+'" data-method="delete" data-remote="true">削除</a></td>'+
+              '<td class="col-md-5"></td>'+
+            '</tr>');
+        }else{
+          $('.chats__tbody').append(
+            '<tr class="row chat chats__record--'+data.id+'">'+
+              '<td class="col-md-5"></td>'+
+              '<td class="col-md-2"></td>'+
+              '<td class="col-md-5">'+data.text+'</td>'+
+            '</tr>');
+        }
+      })
+    });
+  }
+  else{
+    clearInterval();
+  }
+}
+</script>

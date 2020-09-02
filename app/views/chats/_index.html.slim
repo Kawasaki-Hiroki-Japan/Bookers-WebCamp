@@ -1,0 +1,19 @@
+table.table.table-hover.table-inverse
+  thead
+    tr.row
+      th.col-md-5 = "#{current_user.name}(You)"
+      th.col-md-2
+      th.col-md-5 = user.name
+  tbody.chats__tbody
+    - chats.each do |c|
+      tr[class="row chat chats__record--#{c.id}"]
+        - if c.user == current_user
+          td.col-md-5 = c.text
+          td.col-md-2 = link_to '削除', c, method: :delete, remote: true
+          td.col-md-5
+        - else
+          td.col-md-5
+          td.col-md-2
+          td.col-md-5 = c.text
+= form_with(model: chat, url: user_rooms_chats_path(user), method: :post, data: {local: false, remote: true}) do |f|
+  = f.text_field :text, class: 'col-xs-5 chats__text'

@@ -1,0 +1,30 @@
+p = "#{@resource.name}様"
+br
+  | Bookersをご利用いただきありがとうございます。
+br
+br
+p
+  - if @resource.try(:unconfirmed_email?)
+    p 以下のURLをクリックして、メールアドレス変更手続きを完了してください。
+    br
+    = link_to "#{@resource.unconfirmed_email}", confirmation_url(@resource, confirmation_token: @token)
+    br
+    br
+    | このURLの有効期限は24時間です。
+  - else
+    | 会員登録が完了しました。
+    br
+    br
+    = "ユーザ名: #{@resource.name}"
+    br
+    = "メールアドレス: #{@resource.email}"
+    br
+    = "郵便番号: #{@resource.postal_code}"
+    br
+    = "住所（一部）: #{@resource.prefectures + @resource.city}"
+    br
+    br
+p
+ | Bookersを開く
+ br
+ = "http://localhost:3000/users/#{@resource.id}"

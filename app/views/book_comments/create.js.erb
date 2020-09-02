@@ -1,0 +1,7 @@
+$('.books_detail__table').html(
+  "<%= j(render partial: 'books/detail', locals: {book: @comment.book}) %>"
+)
+$('.books_comment__table').html(
+  "<%= j(render partial: 'table', locals: {book_comments: @comment.book.book_comments}) %>"
+)
+$('.books_comment__body--new').val('')

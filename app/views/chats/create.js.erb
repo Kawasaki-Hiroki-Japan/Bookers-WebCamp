@@ -1,0 +1,4 @@
+$('.chats__table').html(
+  "<%= j(render partial: 'chats/index', locals: {chats: @room.chats, chat: @chat, user: @user}) %>"
+)
+$('.chats__text').val('')

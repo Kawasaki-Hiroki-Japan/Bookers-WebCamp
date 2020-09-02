@@ -1,0 +1,12 @@
+.row
+  .col-md-12
+    = form_for(book) do |f|
+      .field.row.mt-3
+        = f.label :title
+        = f.text_field :title, class: 'col-md-12 book__title'
+      .field.row.mt-3
+        = f.label :opinion
+        = f.text_area :body, class: 'col-md-12 book__body'
+      .actions.row.mt-3
+        = f.submit "Update", class: 'btn btn-primary col-md-8'
+        = link_to 'Destroy', book, method: :delete, data: { confirm: '本当に消しますか？' }, class: 'btn btn-danger offset-md-1 col-md-3'

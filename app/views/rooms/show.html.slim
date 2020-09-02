@@ -1,0 +1,7 @@
+.row
+  .application__sidebar.col-md-3
+    == render 'users/info', user: @user
+  .rooms.offset-md-1.col-md-8
+    == render 'rooms/show', room: @room, chat: @chat, user: @user
+
+== render 'show.js.erb'

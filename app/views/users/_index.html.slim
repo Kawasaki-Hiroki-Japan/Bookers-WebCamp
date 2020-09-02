@@ -1,0 +1,17 @@
+.row
+  h2 Users
+  table.table.table-hover.table-inverse.users_index__table.col-md-12
+    thead
+      tr
+        th image
+        th name
+        th[colspan="4"]
+    tbody
+      - users.each do |user|
+        tr
+          td = attachment_image_tag(user, :profile_image, size: "50x50", fallback: "no-image-icon.jpg")
+          td = user.name
+          td = "フォロー数：#{user.followings.count}"
+          td = "フォロワー数：#{user.followers.count}"
+          td == render 'users/follow_btn', user: user
+          td = link_to 'Show', user, class: "btn btn-info"
